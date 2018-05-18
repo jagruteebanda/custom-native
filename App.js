@@ -9,8 +9,12 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  NativeModules,
+  TouchableWithoutFeedback
 } from 'react-native';
+
+console.log(NativeModules, '++++++++++++');
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -21,6 +25,13 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  cameraButtonPress() {
+    NativeModules.CustomModule.openCamera((cb) => {
+      console.log(cb, '+++++++++++++');
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -33,6 +44,12 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+
+        <TouchableWithoutFeedback onPress={() => this.cameraButtonPress()}>
+          <View style={{ height: 50, width: 100, backgroundColor: '#ba124c', alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, color: '#000000' }}>{'Camera'}</Text>
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     );
   }
