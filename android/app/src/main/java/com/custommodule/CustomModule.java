@@ -58,7 +58,7 @@ public class CustomModule extends ReactContextBaseJavaModule {
                 Uri photoURI = fileProvider.getUriForFile(reactContext, reactContext.getApplicationContext().getPackageName() + ".fileprovider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 reactContext.getCurrentActivity().startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-                reactContext.getCurrentActivity().createPendingResult()
+//                reactContext.getCurrentActivity().createPendingResult();
                 try {
                     cameraData.put("imageUri", photoURI);
                 } catch (JSONException e) {

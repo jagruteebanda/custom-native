@@ -1,23 +1,37 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
+import { inject } from 'mobx-react'; //decorator
 
-class SplashScreen extends Component {
+@inject("stores")
+export default class SplashScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            stores: this.props.stores,
+            navigation: this.props.navigation
         }
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.state.navigation.navigate("Login")
+        }, this.state.stores.config.SplashTime);
     }
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#ba124c' }}>
+            <View style={{ flex: 1 }}>
+                <Image
+                    style={{ flex: 1, width: null, height: null }}
+                    source={this.state.stores.config.SplashImg}
+                />
             </View>
         );
     }
 }
 
-export default SplashScreen;
+// export default SplashScreen;
