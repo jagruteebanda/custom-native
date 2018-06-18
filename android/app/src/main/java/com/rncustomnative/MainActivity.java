@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.custommodule.CameraIntent;
 import com.facebook.react.ReactActivity;
 
 import java.io.File;
@@ -26,17 +27,9 @@ public class MainActivity extends ReactActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("react", "onActivityResult: " + requestCode);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            Log.d("react", "onActivityResult: " + imageBitmap);
-            File path = new File(getFilesDir(), "/Pictures/");
-            if (!path.exists()) path.mkdirs();
-            File imageFile = new File(path, "image.jpg");
-            Log.d("react", "onActivityResult: "+ imageFile);
-                // use imageFile to open your image
+            CameraIntent.onActivityResult(requestCode, resultCode, data);
         }
     }
 }
