@@ -2,24 +2,23 @@ import React, { Component } from 'react';
 
 import AppNavigator from './app/app.navigator';
 
+import { Provider } from 'mobx-react';
+import stores from './app/stores';
+
+import { StyleProvider } from 'native-base';
+import getTheme from './native-base-theme/components';
+import custom from './native-base-theme/variables/custom';
+
 type Props = {};
 export default class App extends Component<Props> {
 
-  // cameraButtonPress() {
-  //   NativeModules.CustomModule.openCamera();
-  // }
-
   render() {
     return (
-      <AppNavigator/>
+        <Provider stores={stores}>
+            <StyleProvider style={getTheme(custom)}>
+                <AppNavigator/>
+            </StyleProvider>
+        </Provider>
     );
   }
 }
-
-// <View>
-//   <TouchableWithoutFeedback onPress={() => this.cameraButtonPress()}>
-//     <View style={{ height: 50, width: 100, backgroundColor: '#ba124c', alignItems: 'center', justifyContent: 'center' }}>
-//       <Text style={{ fontSize: 20, color: '#000000' }}>{'Camera'}</Text>
-//     </View>
-//   </TouchableWithoutFeedback>
-// </View>
