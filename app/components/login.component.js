@@ -7,6 +7,9 @@ import {
     Form,
     Text
 } from 'native-base';
+import {
+  ToastAndroid
+} from 'react-native';
 
 import { observer } from 'mobx-react/native';
 import { observable } from 'mobx';
@@ -34,6 +37,8 @@ class Login extends Component {
         }).then((response) => {
             console.log(response);
             this.state.navigation.navigate('Match');
+        }).catch((err) => {
+            ToastAndroid.show('Pleaes check credentials');
         });
     }
 

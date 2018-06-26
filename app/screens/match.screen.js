@@ -14,7 +14,7 @@ export default class MatchScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+          stores: this.props.stores
         }
     }
 
@@ -34,7 +34,7 @@ export default class MatchScreen extends Component {
                     scrollEnabled={false}
                     style={{ backgroundColor: '#858585' }}
                 >
-                    <Match store={this.props.stores}/>
+                    <Match {...this.props} />
                 </Content>
             </Container>
         );

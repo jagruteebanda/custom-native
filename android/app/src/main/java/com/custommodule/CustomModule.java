@@ -24,6 +24,8 @@ import java.util.Date;
 public class CustomModule extends ReactContextBaseJavaModule {
 
     ReactApplicationContext reactContext;
+    static final int REQUEST_TAKE_PHOTO = 1;
+    String mCurrentPhotoPath;
 
     public CustomModule(ReactApplicationContext reactContext) {
         super(reactContext);
